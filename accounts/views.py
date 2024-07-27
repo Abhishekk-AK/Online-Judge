@@ -18,7 +18,7 @@ def register_user(request):
 
         if user.exists():
             messages.info(request, 'User with this username already exists')
-            return redirect('/auth/register/')
+            return redirect('/accounts/register/')
 
         user = User.objects.create_user(username = username)
 
@@ -27,7 +27,7 @@ def register_user(request):
         user.save()
 
         messages.info(request, 'User created Successfully')
-        return redirect('/auth/register/')
+        return redirect('/accounts/register/')
 
     template = loader.get_template('register.html')
     context = {}
@@ -41,19 +41,19 @@ def login_user(request):
 
         if not User.objects.filter(username = username).exists():
             messages.info(request, 'User witth this username does not exist')
-            return redirect('/auth/login/')
+            return redirect('/accounts/login/')
 
         user = authenticate(username=username, password=password)
 
         if user is None:
             messages.info(request, 'Invalid password')
-            return redirect('/auth/login/')
+            return redirect('/accounts/login/')
         
 
         login(request, user)
         messages.info(request, 'Login successful')
 
-        return redirect('/home/polls/')
+        return redirect('/judge/problems/')
 
     template = loader.get_template('login.html')
     context = {}
@@ -62,4 +62,4 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.info(request, 'Logout Successful')
-    return redirect('/auth/login/')
+    return redirect('/accounts/login/')

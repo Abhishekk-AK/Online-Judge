@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Problem(models.Model):
-    statement = models.CharField(max_length=2550)
-    name = models.CharField(max_length=100)
+    statement = models.CharField(max_length=200)
+    name = models.CharField(max_length=3000)
     code = models.CharField(max_length=20, unique=True)
     difficulty = models.CharField(
         max_length=10,

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Execution Result</title>
+</head>
+<body>
+    <h1>Execution Result</h1>
+    <p><strong>Language:</strong> {{ submission.language }}</p>
+    <p><strong>Code:</strong></p>
+    <pre>{{ submission.code }}</pre>
+    <p><strong>Input:</strong></p>
+    <pre>{{ submission.input_data }}</pre>
+    <p><strong>Output:</strong></p>
+    <pre>{{ submission.output_data }}</pre>
+    <p><strong>Verdict:</strong> {{ verdict }}</p>
+    {% if failed_test_cases %}
+        <p><strong>Failed at Test Case(s):</strong> {{ failed_test_cases }}</p>
+    {% endif %}
+    <a href="{% url 'problems' %}">Run another code</a>
+</body>
+</html>

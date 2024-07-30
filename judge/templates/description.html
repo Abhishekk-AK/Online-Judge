@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Poll Detail</title>
-  </head>
-  <body>
-    <h1>{{ req_problem.statement }}</h1>
-    <p>{{ req_problem.name}}</p>
-    <p>{{ req_problem.code}}</p>
-    <p>{{ req_problem.difficulty}}</p>
+<head>
+  <meta charset="UTF-8" />
+  <title>Problem Details</title>
+</head>
+<body>
+  <h1>{{ req_problem.statement }}</h1>
+  <p>{{ req_problem.name }}</p>
+  <p>Difficulty: {{ req_problem.difficulty }}</p>
 
-
-
-  </body>
+  <h1>Code Compiler</h1>
+  <form method="post" action="{% url 'submit' req_problem.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="run" type="submit">Run Code</button>
+    <button name="submit" type="submit">Submit</button>
+  </form>
+</body>
 </html>
